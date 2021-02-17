@@ -1,11 +1,9 @@
-#include <LiquidCrystal_I2C.h>
-
 /*----------------------------------------------------------
     MH-Z19 CO2 sensor  SAMPLE
   ----------------------------------------------------------*/
 #include <MHZ19_uart.h> // incluye librería para manejo del sensor de CO2
 #include <Wire.h> 
-
+#include <LiquidCrystal_I2C.h>
 
 
 //Crear el objeto display  dirección  0x27 y 16 columnas x 2 filas
