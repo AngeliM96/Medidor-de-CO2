@@ -47,7 +47,7 @@ void setup() {
   tone(buzzer, 55,20); // pita para avisar que arrancó
 
   // Inicializar el display
-  display.begin();
+  display.init();
   display.clear(); // borra pantalla
   //Encender la luz de fondo.
   display.backlight();
