@@ -3,27 +3,30 @@
 const int pinLed = 13;
 const int pinBuzzer = 12;
 const int notaAlarma = NOTE_C5;
+
 void setup()
 {
   Serial.begin(9600);
   pinMode(pinBuzzer, OUTPUT); 
   pinMode(pinLed, OUTPUT);
+
   Serial.print("Alarma 1 \n");
-  parpadearYSonar(5, 1000, 1000);
+  parpadearYSonar(5, 1000);
   delay(1000);
+
   Serial.print("Alarma 2 \n");
-  parpadearYSonar(5, 500, 500);
+  parpadearYSonar(5, 500);
   delay(1000);
+
   Serial.print("Alarma 3 \n");
-  parpadearYSonar(5, 250, 250);
-  
+  parpadearYSonar(5, 250);
 }
 
 void loop()
 {
 }
 
-void parpadearYSonar(int veces, int demora, int duracionNota)
+void parpadearYSonar(int veces, int duracionNota)
 {
   for(int i=0; i<veces; i++)
   {
@@ -32,7 +35,6 @@ void parpadearYSonar(int veces, int demora, int duracionNota)
     delay(duracionNota);
     noTone(pinBuzzer);   
     digitalWrite(pinLed , LOW);   
-    //delay(1000);
-    delay(demora);
+    delay(duracionNota);
   }
 }
