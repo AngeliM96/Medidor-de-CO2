@@ -44,11 +44,9 @@ void setup() {
 //-----------------Loop-----------------------------
 void loop() {
   if ( ++segundosPasados % 60 == 0) { // Si cnt es múltiplo de 60
-    Serial.print(String(segundosPasados / 60) + "minutos \n"); // Cada minuto muestra el valor 
-    Serial.print("co2: " + String(sensor.getPPM()) + "ppm \n"); // Escribe CO2
+    Serial.print(String(segundosPasados / 60) + " minutos \n"); // Cada minuto muestra el valor 
+    Serial.print("CO2: " + String(sensor.getPPM()) + "ppm \n"); // Escribe CO2
     alarma(1);
-  } else {
-    Serial.print(String(segundosPasados)+ "segundos \n");    
   }
   
   delay(1000); // Espera 1 segundo
@@ -63,7 +61,7 @@ void loop() {
     alarma(2);
     
     for(int i=0; i<10; i++) { // muestra mediciones
-      Serial.print("co2: " + String(sensor.getPPM()) + "ppm \n");    // Escribe texto
+      Serial.print("CO2: " + String(sensor.getPPM()) + "ppm \n");    // Escribe texto
       delay(10000); // Espera 10 segundos
     }
     segundosPasados = 0; // vuelve a empezar la calibración

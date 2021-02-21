@@ -8,8 +8,8 @@
 //Crear el objeto display  dirección  0x27 y 16 columnas x 2 filas
 LiquidCrystal_I2C display(0x27,16,2);  //
 
-const int rx_pin = 3;  //Serial rx pin no
-const int tx_pin = 4;  //Serial tx pin no
+const int rx_pin = 4;  //Serial rx pin no
+const int tx_pin = 3;  //Serial tx pin no
 
 const int waitingMinutes = 30;  //cantidad de minutos a esperar
 const long waitingSeconds = waitingMinutes * 60L; // cantidad de segundos a esperar
