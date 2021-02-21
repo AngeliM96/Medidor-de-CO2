@@ -4,8 +4,8 @@
 #include <MHZ19_uart.h>
 
 //-----------------Pines----------------------------
-const int rx_pin = 0;     // Serial rx
-const int tx_pin = 1;     // Serial tx
+const int rx_pin = 3;     // Serial rx
+const int tx_pin = 4;     // Serial tx
 const int pinBuzzer = 12; // Buzzer
 const int pinLed = 13;    // Led
 
