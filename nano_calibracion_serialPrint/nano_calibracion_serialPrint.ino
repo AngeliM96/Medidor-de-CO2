@@ -46,7 +46,7 @@ void loop() {
   if ( ++segundosPasados % 60 == 0) { // Si cnt es múltiplo de 60
     Serial.print(String(segundosPasados / 60) + " minutos \n"); // Cada minuto muestra el valor 
     Serial.print("CO2: " + String(sensor.getPPM()) + "ppm \n"); // Escribe CO2
-    alarma(1);
+    //alarma(1);
   }
   
   delay(1000); // Espera 1 segundo
