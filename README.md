@@ -6,6 +6,7 @@ Es una placa creada por RobotGroup basada en un Arduino Nano
 
 ## Se han usado las librerías:
 Sensor MH-Z19  https://github.com/piot-jp-Team/mhz19_uart 
+
 Display https://github.com/fdebrabander/Arduino-LiquidCrystal-I2C-library 
 
 ## Driver del microcontrolador
