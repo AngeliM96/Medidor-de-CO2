@@ -16,7 +16,6 @@ const long segundosEspera = 1800;      // Cantidad de segundos a esperar
 long segundosPasados = 0;              // Cuenta segundos
 MHZ19_uart sensor;                     // Creo el objeto del sensor
 LiquidCrystal_I2C display(0x27,16,2);  // Creo el objeto display  dirección  0x27 y 16 columnas x 2 filas
-
 //-----------------Alarma----------------------------
 void alarma(int veces) {
   for(int i=0; i<veces; i++)
@@ -29,7 +28,6 @@ void alarma(int veces) {
     delay(250);                       // Delay entre alarmas
   }
 }
-
 //-----------------Setup----------------------------
 void setup() {
   display.begin();                    // Inicio
