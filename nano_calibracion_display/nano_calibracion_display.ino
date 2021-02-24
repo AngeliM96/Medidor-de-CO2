@@ -28,28 +28,31 @@ void alarma(int veces) {
     delay(250);                       // Delay entre alarmas
   }
 }
+//-----------Print-por-display----------------------
+void displayPrint(int posicion, int linea, String texto) {
+  display.setCursor(posicion, linea);       // Ubicamos el cursor en la posicion y linea deseada
+  display.print(texto);                     // Escribe primera linea del cartel
+}
 //-----------------Setup----------------------------
 void setup() {
-  display.begin();                    // Inicio
-  display.clear();                    // Limpio
-  display.backlight();                // Prendo la backlight
+  display.begin();                      // Inicio
+  display.clear();                      // Limpio
+  display.backlight();                  // Prendo la backlight
   // Setteamos los pines de buzzer y led
   pinMode(pinBuzzer, OUTPUT); 
   pinMode(pinLed, OUTPUT);
-  sensor.begin(rx_pin, tx_pin);       // Setteamos los pines y iniciamos el sensor
-  sensor.setAutoCalibration(false);   // Se setea la autocalibracion en falso para poder calibrar cuando se desee
-  Serial.begin(9600);                 // Iniciamos el serial
+  sensor.begin(rx_pin, tx_pin);         // Setteamos los pines y iniciamos el sensor
+  sensor.setAutoCalibration(false);     // Se setea la autocalibracion en falso para poder calibrar cuando se desee
+  Serial.begin(9600);                   // Iniciamos el serial
   // Print por serial
-  Serial.print("Calentando \n");      // Escribe primera linea del cartel
-  Serial.print("Espere 1 minuto \n"); // Escribe segunda linea del cartel
+  Serial.print("Calentando \n");        // Escribe primera linea del cartel
+  Serial.print("Espere 1 minuto \n");   // Escribe segunda linea del cartel
   // Print por display
-  display.clear();                    // Borra pantalla  
-  display.setCursor(0, 0);            // Ubicamos el cursor en la primera posición(columna:0) de la primera línea(fila:0)
-  display.print("Calentando");        // Escribe primera linea del cartel
-  display.setCursor(0, 1);            // Ubicamos el cursor en la primera posición(columna:0) de la segunda línea(fila:1)
-  display.print("Espere 1 minuto");   // Escribe segunda linea del cartel
-  delay(60000);                       // Espera 60 segundos
-  display.clear();                    // Borra pantalla  
+  display.clear();                      // Borra pantalla  
+  displayPrint(0, 0, "Calentando");     // Escribe primera linea del cartel
+  displayPrint(0, 1, "Espere 1 minuto");// Escribe segunda linea del cartel
+  delay(60000);                         // Espera 60 segundos
+  display.clear();                      // Borra pantalla  
   alarma(2);
 }
 
@@ -61,24 +64,17 @@ void loop() {
     Serial.print("CO2: " + String(sensor.getPPM()) + "ppm \n"); // Escribe CO2
     // Print por display
     display.clear();                                            // Borra pantalla  
-    display.setCursor(0,0);                                     // Ubicamos el cursor en la primera posición(columna:0) de la primera línea(fila:0)
-    display.print(segundosPasados / 60);                         // Cada minuto muestra el valor
-    display.setCursor(7,0);                                     // Ubicamos el cursor en la octava posición(columna:7) de la primera línea(fila:0)
-    display.print("minutos"); 
-    display.setCursor(0, 1);                                    // Ubicamos el cursor en la primera posición(columna:0) de la segunda línea(fila:1)
-    display.print("CO2: ");    
-    display.setCursor(8, 1);                                    // Ubicamos el cursor en la novena posición(columna:8) de la segunda línea(fila:1)
-    display.print(sensor.getPPM());                              // Escribe CO2
-    display.setCursor(12, 1);                                   // Ubicamos el cursor en la treceava posición(columna:12) de la segunda línea(fila:1)
-    display.print("ppm");
+    displayPrint(0, 0, String(segundosPasados / 60));           // Ubicamos el cursor en la primera posición(columna:0) de la primer línea(fila:0) y escribimos los minutos pasados
+    displayPrint(7, 0, "minutos");
+    displayPrint(0, 1, "CO2: ");                                // Ubicamos el cursor en la primera posición(columna:0) de la segunda línea(fila:1) y escribimos el CO2
+    displayPrint(8, 1, String(sensor.getPPM()));
+    displayPrint(12, 1, "ppm");
   }
   else {
     // Print por display
     display.clear();                                            // Borra pantalla  
-    display.setCursor(0,0);                                     // Ubicamos el cursor en la primera posición(columna:0) de la primera línea(fila:0)
-    display.print(segundosPasados / 60);                         // Cada minuto muestra el valor
-    display.setCursor(7,0);                                     // Ubicamos el cursor en la octava posición(columna:7) de la primera línea(fila:0)
-    display.print("minutos"); 
+    displayPrint(0, 0, String(segundosPasados / 60));           // Ubicamos el cursor en la primera posición(columna:0) de la primer línea(fila:0) y escribimos los minutos pasados
+    displayPrint(7, 0, "minutos");
   }
   
   delay(1000); // Espera 1 segundo
@@ -88,11 +84,9 @@ void loop() {
     // Print por serial
     Serial.print("PRIMERA CALIBRACION \n");
     // Print por display
-    display.clear();                      // Limpio pantalla     
-    display.setCursor(0,0);               // Ubicamos el cursor en la primera posición(columna:0) de la primera línea(fila:0)
-    display.print("PRIMERA"); 
-    display.setCursor(0, 1);              // Ubicamos el cursor en la primera posición(columna:0) de la segunda línea(fila:1)
-    display.print("CALIBRACION"); 
+    display.clear();                      // Limpio pantalla
+    displayPrint(0, 0, "PRIMERA");        // Ubicamos el cursor en la primera posición(columna:0) de la primera línea(fila:0)
+    displayPrint(0, 1, "CALIBRACION");    // Ubicamos el cursor en la primera posición(columna:0) de la segunda línea(fila:1) 
     alarma(1);
     delay(60000);                         // Espera 1 minuto
     sensor.calibrateZero();               // Calibra por segunda vez por las dudas
@@ -100,10 +94,8 @@ void loop() {
     Serial.print("SEGUNDA CALIBRACION \n");
     // Print por display
     display.clear();                      // Limpio pantalla     
-    display.setCursor(0,0);               // Ubicamos el cursor en la primera posición(columna:0) de la primera línea(fila:0)
-    display.print("SEGUNDA"); 
-    display.setCursor(0, 1);              // Ubicamos el cursor en la primera posición(columna:0) de la segunda línea(fila:1)
-    display.print("CALIBRACION"); 
+    displayPrint(0, 0, "SEGUNDA");        // Ubicamos el cursor en la primera posición(columna:0) de la primera línea(fila:0)
+    displayPrint(0, 1, "CALIBRACION");    // Ubicamos el cursor en la primera posición(columna:0) de la segunda línea(fila:1) 
     alarma(2);
     
     for(int i=0; i<10; i++) {             // Muestra mediciones
@@ -111,12 +103,9 @@ void loop() {
       Serial.print("CO2: " + String(sensor.getPPM()) + "ppm \n");
       // Print por display
       display.clear();                    // borra pantalla
-      display.setCursor(0, 0);            // Ubicamos el cursor en la primera posición(columna:0) de la primera línea(fila:0)
-      display.print("CO2: ");             // Escribe texto
-      display.setCursor(8, 0);            // Ubicamos el cursor en la novena posición(columna:8) de la primera línea(fila:0)
-      display.print(sensor.getPPM());      // Escribe CO2
-      display.setCursor(12, 0);           // Ubicamos el cursor en la treceava posición(columna:12) de la primera línea(fila:0)
-      display.print("ppm");
+      displayPrint(0, 0, "CO2: ");        // Ubicamos el cursor en la primera posición(columna:0) de la segunda línea(fila:1) y escribimos el CO2
+      displayPrint(8, 0, String(sensor.getPPM()));
+      displayPrint(12, 0, "ppm");
       delay(10000);                       // Espera 10 segundos
     }
     segundosPasados = 0;                  // Vuelve a empezar la calibración
