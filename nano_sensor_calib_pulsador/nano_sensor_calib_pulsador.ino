@@ -9,7 +9,7 @@ const int rx_pin = 3;     // Serial rx
 const int tx_pin = 4;     // Serial tx
 const int pinBuzzer = 12; // Buzzer
 const int pinLed = 13;    // Led
-const int pinCalib = 11;  // Pulsador calibracion
+const int pinCalib = 2;  // Pulsador calibracion
 //--------------------------------------------------
 long loops = 0;                         // Contamos las veces que se ejecutó el loop
 MHZ19_uart sensor;                      // creo el objeto del sensor
