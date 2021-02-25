@@ -96,7 +96,8 @@ void loop() {
     display.clear();                      // Limpio pantalla     
     displayPrint(0, 0, "SEGUNDA");        // Ubicamos el cursor en la primera posición(columna:0) de la primera línea(fila:0)
     displayPrint(0, 1, "CALIBRACION");    // Ubicamos el cursor en la primera posición(columna:0) de la segunda línea(fila:1) 
-    alarma(2);
+    alarma(1);
+    delay(60000);                         // Espera 1 minuto
     
     for(int i=0; i<10; i++) {             // Muestra mediciones
       // Print por serial
