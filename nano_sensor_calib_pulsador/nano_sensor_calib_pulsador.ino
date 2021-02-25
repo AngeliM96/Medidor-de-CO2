@@ -44,7 +44,7 @@ void setup() {
   delay(5000);                                
   display.clear();                            // Limpio la pantalla
   // Print por serial
-  Serial.print("Calentando, espere 1 minuto");
+  Serial.print("Calentando, espere 1 minuto \n");
   // Print por display
   displayPrint(0, 0, "Calentando");       // Ubicamos el cursor en la primera posición(columna:0) de la primera línea(fila:0)
   displayPrint(0, 1, "Espere 1 minuto"); // Ubicamos el cursor en la primera posición(columna:0) de la primera línea(fila:0)
@@ -89,14 +89,14 @@ void loop() {
   displayPrint(12, 1, "*C");                          // Ubicamos el cursor en la treceava posición(columna:12) de la segunda línea(fila:1)
   
   //  Emite una alarma en función del resultado
-  if(co2ppm >= 1200){
-    alarma(8, 250);
-  } 
-  else if(co2ppm >= 1000){
+  if(co2ppm >= 1000 and co2ppm < 1200){
     alarma(4, 500);
   } 
   else if(co2ppm >= 800){
     alarma(2, 1000);
   } 
+  while(sensor.getPPM() >= 1200) {
+    alarma(1, 250);
+  }
   delay(10000); //demora 10 seg entre mediciones
 }

@@ -21,7 +21,7 @@ void calibrar()
   const long segundosEspera = 1800;      // Cantidad de segundos a esperar
   long segundosPasados = 0;              // Cuenta segundos
   // Print por serial
-  Serial.print("COMIENZA CALIBRACION");
+  Serial.print("COMIENZA CALIBRACION \n");
   // Print por display
   display.clear();
   displayPrint(0, 0, "COMIENZA");
@@ -48,26 +48,24 @@ void calibrar()
     }
     delay(1000); // Espera 1 segundo
   }
-  else {
-    sensor.calibrateZero();               // Calibra
-    // Print por serial
-    Serial.print("PRIMERA CALIBRACION \n");
-    // Print por display
-    display.clear();                      // Limpio pantalla
-    displayPrint(0, 0, "PRIMERA");        // Ubicamos el cursor en la primera posición(columna:0) de la primera línea(fila:0)
-    displayPrint(0, 1, "CALIBRACION");    // Ubicamos el cursor en la primera posición(columna:0) de la segunda línea(fila:1) 
-    alarma(1, 250);
-    delay(60000);                         // Espera 1 minuto
-    sensor.calibrateZero();               // Calibra por segunda vez por las dudas
-    // Print por serial
-    Serial.print("SEGUNDA CALIBRACION \n");
-    // Print por display
-    display.clear();                      // Limpio pantalla     
-    displayPrint(0, 0, "SEGUNDA");        // Ubicamos el cursor en la primera posición(columna:0) de la primera línea(fila:0)
-    displayPrint(0, 1, "CALIBRACION");    // Ubicamos el cursor en la primera posición(columna:0) de la segunda línea(fila:1) 
-    alarma(1, 250);
-    delay(10000); // Espera 10 segundos
-  }
+  sensor.calibrateZero();               // Calibra
+  // Print por serial
+  Serial.print("PRIMERA CALIBRACION \n");
+  // Print por display
+  display.clear();                      // Limpio pantalla
+  displayPrint(0, 0, "PRIMERA");        // Ubicamos el cursor en la primera posición(columna:0) de la primera línea(fila:0)
+  displayPrint(0, 1, "CALIBRACION");    // Ubicamos el cursor en la primera posición(columna:0) de la segunda línea(fila:1) 
+  alarma(1, 250);
+  delay(60000);                         // Espera 1 minuto
+  sensor.calibrateZero();               // Calibra por segunda vez por las dudas
+  // Print por serial
+  Serial.print("SEGUNDA CALIBRACION \n");
+  // Print por display
+  display.clear();                      // Limpio pantalla     
+  displayPrint(0, 0, "SEGUNDA");        // Ubicamos el cursor en la primera posición(columna:0) de la primera línea(fila:0)
+  displayPrint(0, 1, "CALIBRACION");    // Ubicamos el cursor en la primera posición(columna:0) de la segunda línea(fila:1) 
+  alarma(1, 250);
+  delay(10000); // Espera 10 segundos
   // Print por serial
   Serial.print("CALIBRACION TERMINADA \n");
   // Print por display
