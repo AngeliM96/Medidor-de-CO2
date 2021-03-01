@@ -73,21 +73,7 @@ void loop() {
   } 
   int co2ppm = sensor.getPPM(); // mide CO2
   int temp = sensor.getTemperature(); // mide temperatura
-
-  // Print por serial  
-  Serial.print("CO2: " + String(co2ppm) + "ppm \n");  // Escribe CO2
-  Serial.print("Temp: " + String(temp) + "*C \n");    // Escribe temperatura
-  // Print por display
-  // Muestra medición de CO2   
-  display.clear();                                    // Borra pantalla
-  displayPrint(0, 0, "CO2: ");                        // Ubicamos el cursor en la primera posición(columna:0) de la primera línea(fila:0)
-  displayPrint(8, 0, String(co2ppm));                 // Ubicamos el cursor en la novena posición(columna:8) de la primera línea(fila:0)
-  displayPrint(12, 0, "ppm");                         // Ubicamos el cursor en la treceava posición(columna:12) de la primera línea(fila:0)
-  // Muestra medición de temperatura
-  displayPrint(0, 1, "Temp: ");                       // Ubicamos el cursor en la primera posición(columna:0) de la segunda línea(fila:1)
-  displayPrint(8, 1, String(temp));                   // Ubicamos el cursor en la novena posición(columna:8) de la segunda línea(fila:1)
-  displayPrint(12, 1, "*C");                          // Ubicamos el cursor en la treceava posición(columna:12) de la segunda línea(fila:1)
-  
+  imprimirCO2(co2ppm, temp);
   //  Emite una alarma en función del resultado
   if(co2ppm >= 1000 and co2ppm < 1200){
     alarma(4, 500);
@@ -98,5 +84,6 @@ void loop() {
   while(sensor.getPPM() >= 1200) {
     alarma(1, 250);
   }
+  imprimirCO2(co2ppm, temp);
   delay(10000); //demora 10 seg entre mediciones
 }
