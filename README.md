@@ -14,5 +14,8 @@ En este repositorio se encuentran ambas librerias como archivos .zip para ser in
 ## Driver del microcontrolador
 El microcontrolador de esta placa es un CH340G, el driver se puede descargar para su sistema operativo correspondiente desde este [enlace](http://www.wch.cn/download/CH341SER_EXE.html)
 
+## WIP: Preparando el IDE para usar Wemos/esp8266
+Pasos a seguir en este [enlace](https://github.com/esp8266/Arduino#installing-with-boards-manager)
+
 ## Acerca del proyecto
 La información del proyecto se puede encontrar en la [página web de Jorge Aliaga](http://www.jorgealiaga.com.ar/?page_id=2864)
