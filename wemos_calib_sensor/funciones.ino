@@ -1,4 +1,30 @@
+//-----------Led-RGB----------------------
+void rgb(char color) {
+  switch (color) {
+    case 'r':
+      digitalWrite(pinLedR, 0);
+      digitalWrite(pinLedG, 255);
+      digitalWrite(pinLedB, 255);
+      break;
+    case 'g':
+      digitalWrite(pinLedR, 255);
+      digitalWrite(pinLedG, 0);
+      digitalWrite(pinLedB, 255);
+      break;
+    case 'y':
+      digitalWrite(pinLedR, 0);
+      digitalWrite(pinLedG, 0);
+      digitalWrite(pinLedB, 255);
+      break;
+    case 'b':
+      digitalWrite(pinLedR, 0);
+      digitalWrite(pinLedG, 255);
+      digitalWrite(pinLedB, 255);
+      break;
+  }
+}
 //-----------------Alarma----------------------------
+/*
 void alarma(int veces, int duracionNota) {
   for(int i=0; i<veces; i++)
   {
@@ -7,7 +33,7 @@ void alarma(int veces, int duracionNota) {
     noTone(pinBuzzer);                    // Silencio el buzzer
     delay(duracionNota);                  // Delay entre alarmas
   }
-}
+}*/
 //-----------Print-por-display----------------------
 void displayPrint(int posicion, int linea, String texto) {
   display.setCursor(posicion, linea);       // Ubicamos el cursor en la posicion y linea deseada
@@ -29,6 +55,7 @@ void imprimirCO2(int co2ppm, int temp) {
   displayPrint(12, 1, "*C");                          // Ubicamos el cursor en la treceava posición(columna:12) de la segunda línea(fila:1)
 }
 //-----------Calibración----------------------
+/*
 void calibrar()
 {
   const long segundosEspera = 1800;      // Cantidad de segundos a esperar
@@ -89,11 +116,4 @@ void calibrar()
   displayPrint(0, 1, "TERMINADA");    // Ubicamos el cursor en la primera posición(columna:0) de la segunda línea(fila:1)
   alarma(5, 250);
   delay(10000); // Espera 10 segundos 
-}
-//-----------Led-RGB----------------------
-void rgb(int red, int green, int blue)
-{
-  analogWrite(pinLedR, red);    // Prende LED ROJO
-  analogWrite(pinLedG, green);  // Prende LED VERDE
-  analogWrite(pinLedB, blue);   // Prende LED AZUL
-}
+}*/
