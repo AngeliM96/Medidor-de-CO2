@@ -5,11 +5,11 @@
 #include <Wire.h> 
 #include <LiquidCrystal_I2C.h>
 //-----------------Pines----------------------------
-const int rx_pin = D3;     // Serial rx
-const int tx_pin = D4;     // Serial tx
-const int pinLedR = D6;    // Led Rojo
-const int pinLedG = D7;    // Led Verde
-const int pinLedB = D8;    // Led Azul
+const int rx_pin = 14;     // Serial rx
+const int tx_pin = 16;     // Serial tx
+const int pinLedR = 12;    // Led Rojo
+const int pinLedG = 13;    // Led Verde
+const int pinLedB = 15;    // Led Azul
 //--------------------------------------------------
 long loops = 0;                         // Contamos las veces que se ejecutó el loop
 MHZ19_uart sensor;                      // creo el objeto del sensor

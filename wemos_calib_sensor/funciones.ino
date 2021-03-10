@@ -17,9 +17,9 @@ void rgb(char color) {
       digitalWrite(pinLedB, 255);
       break;
     case 'b':
-      digitalWrite(pinLedR, 0);
+      digitalWrite(pinLedR, 255);
       digitalWrite(pinLedG, 255);
-      digitalWrite(pinLedB, 255);
+      digitalWrite(pinLedB, 0);
       break;
   }
 }
